@@ -12,3 +12,5 @@ Mainline Linux port, Device Tree, and reverse-engineering notes for the SmartLab
 | **Storage** | 256 MiB NAND Flash |
 | **Networking** | 10/100 Mbps Ethernet (RJ-45) + optional Wi-Fi module |
 | **Ports** | HDMI 1.4a, USB 2.0 Host, TRRS AV / Analog Audio, IR Receiver |
+
+# Progress
