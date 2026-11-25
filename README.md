@@ -2,6 +2,8 @@
 
 Mainline Linux port, Device Tree, and reverse-engineering notes for the SmartLabs SML-482 HD Base and other Broadcom BCM7230 / BMIPS4380 set-top boxes.
 
+<img width="483" height="224" alt="image" src="https://github.com/user-attachments/assets/503e45b2-c471-439b-9ba0-c3c9c5a57224" />
+
 
 ## Hardware Specifications
 
