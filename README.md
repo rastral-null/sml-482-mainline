@@ -218,3 +218,12 @@ ramfs
 ```
 
 </details>
+
+# Known Issues
+
+- **Second RAM bank ignored (`256 MiB` of `512 MiB` usable):** The upper memory bank (`0x20000000`–`0x2fffffff`, 256 MiB) is currently ignored because `HIGHMEM` is not supported on this BMIPS4380 configuration (`This processor doesn't support highmem. 262144k highmem ignored`).
+- **Missing `reserved-memory` node:** The Device Tree does not yet define a `reserved-memory` region (`No reserved-memory node in the DT`).
+- **`AON_CTRL` mapping error:** Early boot logs show `error mapping AON_CTRL` during platform initialization.
+- **`irqpoll` workaround in cmdline:** Currently booting with `irqpoll` in `bootargs` (`Misrouted IRQ fixup and polling support enabled`), which impacts interrupt performance until IRQ routing is finalized.
+- **Random Ethernet MAC address:** `bcmgenet` currently assigns a random MAC address on boot instead of reading the factory MAC from CFE / NVMEM.
+
