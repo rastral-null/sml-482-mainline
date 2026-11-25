@@ -4,6 +4,7 @@ Mainline Linux port, Device Tree, and reverse-engineering notes for the SmartLab
 
 <img width="483" height="224" alt="image" src="https://github.com/user-attachments/assets/503e45b2-c471-439b-9ba0-c3c9c5a57224" />
 
+Warning! This project is using AI code. If you don't like it, don't use it, please
 
 ## Hardware Specifications
 
