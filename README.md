@@ -1,4 +1,4 @@
-# Smartlabs 482 HD Base / Broadcom 7230 mainline
+## Smartlabs 482 HD Base / Broadcom 7230 mainline
 
 Mainline Linux port, Device Tree, and reverse-engineering notes for the SmartLabs SML-482 HD Base and other Broadcom BCM7230 / BMIPS4380 set-top boxes.
 
@@ -13,8 +13,8 @@ Mainline Linux port, Device Tree, and reverse-engineering notes for the SmartLab
 | **Networking** | 10/100 Mbps Ethernet (RJ-45) + optional Wi-Fi module |
 | **Ports** | HDMI 1.4a, USB 2.0 Host, TRRS AV / Analog Audio, IR Receiver |
 
-# Progress
-
+## Progress
+It's still a WIP, but the kernel already boots:
 <details>
 <summary>Click to expand full <code>dmesg</code> boot log</summary>
 
@@ -219,7 +219,7 @@ ramfs
 
 </details>
 
-# Known Issues
+## Known Issues
 
 - **Second RAM bank ignored (`256 MiB` of `512 MiB` usable):** The upper memory bank (`0x20000000`–`0x2fffffff`, 256 MiB) is currently ignored because `HIGHMEM` is not supported on this BMIPS4380 configuration (`This processor doesn't support highmem. 262144k highmem ignored`).
 - **Missing `reserved-memory` node:** The Device Tree does not yet define a `reserved-memory` region (`No reserved-memory node in the DT`).
