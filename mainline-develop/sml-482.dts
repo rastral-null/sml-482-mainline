@@ -1,0 +1,156 @@
+// SPDX-License-Identifier: GPL-2.0
+/dts-v1/;
+
+#include "bcm7231.dtsi"
+
+/ {
+	compatible = "sml,sml-482", "brcm,bcm7231";
+	model = "SmartLabs SML-482 HD Base";
+
+	memory@0 {
+		device_type = "memory";
+		reg = <0x00000000 0x10000000>,
+		      <0x20000000 0x10000000>;
+	};
+
+	aliases {
+		uart0 = &uart2;
+	};
+
+	chosen {
+		stdout-path = "uart0:115200n8";
+	};
+};
+
+&uart0 {
+	status = "okay";
+};
+
+&uart1 {
+	status = "okay";
+};
+
+&uart2 {
+	status = "okay";
+};
+
+&enet0 {
+	status = "okay";
+};
+
+&nand {
+	status = "okay";
+
+	nand@0 {
+		reg = <0>;
+		nand-ecc-strength = <4>;
+		nand-ecc-step-size = <512>;
+
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@0 {
+				label = "kernel";
+				reg = <0x00000000 0x00800000>;
+				read-only;
+			};
+
+			partition@800000 {
+				label = "backup_kernel";
+				reg = <0x00800000 0x00800000>;
+				read-only;
+			};
+
+			partition@1000000 {
+				label = "raw";
+				reg = <0x01000000 0x0f000000>;
+			};
+		};
+	};
+};
+
+&ehci0 {
+	status = "okay";
+};
+
+&ohci0 {
+	status = "okay";
+};
+
+&ehci1 {
+	status = "okay";
+};
+
+&ohci1 {
+	status = "okay";
+};
+
+&sdhci0 {
+	status = "okay";
+};
+
+&qspi {
+	status = "okay";
+
+	flash@0 {
+		compatible = "jedec,spi-nor";
+		spi-max-frequency = <30000000>;
+		reg = <0>;
+
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@0 {
+				label = "bootldr";
+				reg = <0x00000000 0x00100000>;
+				read-only;
+			};
+
+			partition@100000 {
+				label = "macadr";
+				reg = <0x00100000 0x00010000>;
+				read-only;
+			};
+
+			partition@110000 {
+				label = "nvram";
+				reg = <0x00110000 0x00010000>;
+				read-only;
+			};
+
+			partition@120000 {
+				label = "branding";
+				reg = <0x00120000 0x00060000>;
+				read-only;
+			};
+
+			partition@180000 {
+				label = "splash";
+				reg = <0x00180000 0x00080000>;
+				read-only;
+			};
+
+			partition@200000 {
+				label = "ro_kernel";
+				reg = <0x00200000 0x00400000>;
+				read-only;
+			};
+
+			partition@600000 {
+				label = "env";
+				reg = <0x00600000 0x00010000>;
+				read-only;
+			};
+
+			partition@610000 {
+				label = "bsec";
+				reg = <0x00610000 0x001f0000>;
+				read-only;
+			};
+		};
+	};
+};
