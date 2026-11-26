@@ -16,6 +16,14 @@ Warning! This project is using AI code. If you don't like it, don't use it, plea
 | **Networking** | 10/100 Mbps Ethernet (RJ-45) + optional Wi-Fi module |
 | **Ports** | HDMI 1.4a, USB 2.0 Host, TRRS AV / Analog Audio, IR Receiver |
 
+## Similar STBs
+Several other set-top boxes share the same **Broadcom BCM7230 / BCM7231** (`BMIPS4380`) SoC family and similar hardware architecture:
+
+- **Eltex NV-300:** The closest hardware equivalent to the SML-482 (same BCM7230 platform, but equipped with 1 GiB of RAM instead of 512 MiB).
+- **Eltex NV-102:** Another compact BCM7230-based STB with nearly identical core peripherals and memory layout.
+- **AirTies AIR 7310T (BCM7231B2):** A closely related STB with a successful modern mainline port ([uplg/BCM7231B2](https://github.com/synthe-se/BCM7231B2) running Linux 7.3.x). It has full support for both 256 MiB RAM banks, Ethernet (`bcmgenet`), NAND (`brcmnand` + UBI), USB, and IR in headless mode, making it an invaluable reference for DTS and kernel configuration.
+- **Nemo TV Box HD (ABOX42 M12):** Built on the sibling BCM7231 SoC with a very similar memory map and UART/BBS debug headers.
+
 ## Progress
 It's still a WIP, but the kernel already boots:
 <details>
