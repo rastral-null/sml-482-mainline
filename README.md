@@ -247,7 +247,9 @@ CFE> boot -elf -z 192.168.X.XXX:vmlinux.gz
 ## After kernel boot
 Currently, the mainline kernel boots from USB and initializes a basic Gentoo stage3 rootfs. Next steps and ongoing tasks:
 
+- **Ready-to-use image:** Build a pre-configured, bootable system image for easy deployment.
 - **Reverse-Engineering (Stock Linux 3.10 & Broadcom Nexus API):** ~5% done. Nexus API revealed details about hardware blocks in this STB, such as hardware DRM, HDMI CEC, and a 3D accelerator (VideoCore IV — the same architecture as in the early Raspberry Pi, so 3D acceleration might work in the future).
+- **Upstreaming to Mainline:** After reverse-engineering the Nexus API, the ultimate goal is to submit patches adding full support for Broadcom BCM7230/7231 and the SML-482 board directly to the vanilla Linux kernel, so it boots out-of-the-box without out-of-tree patches.
 
 The main problem is the Nexus API itself, not booting the mainline kernel. It has too many abstraction layers and spaghetti code.. 
 
