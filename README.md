@@ -222,6 +222,35 @@ ramfs
 
 </details>
 
+## Mainline Kernel loading (or anything else)
+To interrupt the default boot sequence and access the CFE bootloader prompt, connect to the onboard UART (`115200 8N1`) and spam `Ctrl+C` right after powering on the STB:
+
+```text
+BCM72300010
+CFE initialized.
+...
+*** Automatic startup canceled via Ctrl-C ***
+CFE>
+```
+
+From the `CFE>` prompt, you can boot a custom kernel over TFTP or from a USB flash drive:
+
+```text
+# Booting from USB (FAT32)
+CFE> boot -elf -z usbdisk0:vmlinux.gz
+
+# Or booting over TFTP
+CFE> ifconfig eth0 -auto
+CFE> boot -elf -z 192.168.X.XXX:vmlinux.gz
+```
+
+## After kernel boot
+Currently, the mainline kernel boots from USB and initializes a basic Gentoo stage3 rootfs. Next steps and ongoing tasks:
+
+- **Reverse-Engineering (Stock Linux 3.10 & Broadcom Nexus API):** ~5% done. Nexus API revealed details about hardware blocks in this STB, such as hardware DRM, HDMI CEC, and a 3D accelerator (VideoCore IV — the same architecture as in the early Raspberry Pi, so 3D acceleration might work in the future).
+
+The main problem is the Nexus API itself, not booting the mainline kernel. It has too many abstraction layers and spaghetti code.. 
+
 ## Known Issues
 
 - **Second RAM bank ignored (`256 MiB` of `512 MiB` usable):** The upper memory bank (`0x20000000`–`0x2fffffff`, 256 MiB) is currently ignored because `HIGHMEM` is not supported on this BMIPS4380 configuration (`This processor doesn't support highmem. 262144k highmem ignored`).
